@@ -1,7 +1,7 @@
 [project]
-name = "ice-breaker"
+name = "first-glance"
 version = "0.1.0"
-description = ""
+description = "AI-powered app that summarizes LinkedIn profiles with key insights and photos — helping you break the ice at first glance."
 authors = [{ name = "rahuljsaliaan", email = "rahuljsaliaan@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.13 <4.0"
@@ -15,7 +15,10 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{ include = "ice_breaker", from = "src" }]
+packages = [{ include = "first_glance", from = "src" }]
+
+[tool.poetry.scripts]
+first-glance = "first_glance.main:main"
 
 
 [build-system]
