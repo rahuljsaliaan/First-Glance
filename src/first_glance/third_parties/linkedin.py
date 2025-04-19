@@ -1,9 +1,12 @@
 import requests
+from typing import Dict, Any, cast
 
 from first_glance.core import settings
 
 
-def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
+def scrape_linkedin_profile(
+    linkedin_profile_url: str, mock: bool = False
+) -> Dict[str, Any]:
     """Scrape information from LinkedIn profiles, Manually scrape the information from the LinkedIn profile"""
 
     response: str
@@ -21,7 +24,7 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
             url=settings.scrapein_url, params=params, timeout=settings.request_time_out
         )
 
-    data = response.json().get("person")
+    data = cast(type=Dict[str, Any], value=response.json().get("person"))
 
     return data
 
