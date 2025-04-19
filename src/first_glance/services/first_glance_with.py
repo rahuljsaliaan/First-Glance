@@ -6,15 +6,11 @@ from langchain_openai import ChatOpenAI
 from first_glance.services import scrape_linkedin_profile
 from first_glance.ai.agents import lookup
 from first_glance.ai.output_parsers import summary_parser
-from first_glance.models import response_dtos
-
-
-class SummaryPromptInput(TypedDict):
-    information: str
+from first_glance.models import response_dtos, llm_schemas
 
 
 def first_glance_with(name: str):
-    """Generates a brief summary and two interesting facts about a person using their LinkedIn data"""
+    """Generates a brief summary and two interesting facts about a person using their LinkedIn data."""
 
     linkedin_url = lookup(name=name)
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_url)
@@ -34,7 +30,7 @@ def first_glance_with(name: str):
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
 
-    chain: Runnable[SummaryPromptInput, response_dtos.Summary] = (
+    chain: Runnable[llm_schemas.SummaryPromptInput, response_dtos.Summary] = (
         summary_prompt_template | llm | summary_parser
     )
 

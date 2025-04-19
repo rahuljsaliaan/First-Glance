@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 
 def generate_date_range(days: int = 365, format: str = "%Y-%m-%d"):
+    """Returns date range (start, current) for the last `days` days."""
 
     # Calculate the start date (365 days ago) and current date
     start_date = datetime.now() - timedelta(days=days)

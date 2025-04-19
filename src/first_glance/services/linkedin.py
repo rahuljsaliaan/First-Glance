@@ -7,7 +7,7 @@ from first_glance.core import settings
 def scrape_linkedin_profile(
     linkedin_profile_url: str, mock: bool = False
 ) -> Dict[str, Any]:
-    """Scrape information from LinkedIn profiles, Manually scrape the information from the LinkedIn profile"""
+    """Scrape information from LinkedIn profiles, Manually scrape the information from the LinkedIn profile."""
 
     response: str
 

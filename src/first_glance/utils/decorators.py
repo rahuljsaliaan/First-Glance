@@ -1,13 +1,15 @@
-from typing import Optional, Callable, TypeVar, Any
+from typing import Optional, Callable
 from functools import wraps
 
-DynamicFunctionType = TypeVar(name="DynamicFunctionType", bound=Callable[..., Any])
+from first_glance.types import DynamicFunctionType
 
 
 def handle_error(
     error_type: Optional[Exception] = Exception,
     on_error: Optional[Callable[..., None]] = None,
 ):
+    """A decorator to handle exceptions by either printing them or executing a callback."""
+
     def decorator(func: DynamicFunctionType) -> DynamicFunctionType:
         @wraps(func)
         def wrapper(*args, **kwargs):
