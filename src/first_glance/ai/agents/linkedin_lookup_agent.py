@@ -5,7 +5,7 @@ from langchain.agents import create_react_agent, AgentExecutor, BaseSingleAction
 
 from first_glance.core import settings
 from first_glance.models import llm_schemas
-from first_glance.tools import ProfileURLTavilyTool
+from first_glance.ai.tools import ProfileURLTavilyTool
 
 
 class LinkedInLookupAgent:

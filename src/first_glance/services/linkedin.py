@@ -24,7 +24,7 @@ def scrape_linkedin_profile(
             url=settings.scrapein_url, params=params, timeout=settings.request_time_out
         )
 
-    data = cast(type=Dict[str, Any], value=response.json().get("person"))
+    data = cast(typ=Dict[str, Any], val=response.json().get("person"))
 
     return data
 

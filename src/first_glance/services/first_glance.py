@@ -1,11 +1,13 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
-from first_glance.third_parties import scrape_linkedin_profile
-from first_glance.agents import lookup
+from first_glance.services import scrape_linkedin_profile
+from first_glance.ai.agents import lookup
 
 
 def first_glance_with(name: str) -> str:
+    """Generates a brief summary and two interesting facts about a person using their LinkedIn data"""
+
     linkedin_url = lookup(name=name)
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_url)
 
@@ -24,12 +26,9 @@ def first_glance_with(name: str) -> str:
 
     res = chain.invoke(input={"information": linkedin_data})
 
-    print(res)
-
-
-def main():
-    first_glance_with(name="Rahul J Saliaan")
+    return res.content
 
 
 if __name__ == "__main__":
-    main()
+    res = first_glance_with(name="Rahul J Saliaan")
+    print(res)
