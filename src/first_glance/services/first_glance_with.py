@@ -1,11 +1,19 @@
+from typing import TypedDict
 from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
 
 from first_glance.services import scrape_linkedin_profile
 from first_glance.ai.agents import lookup
+from first_glance.ai.output_parsers import summary_parser
+from first_glance.models import response_dtos
 
 
-def first_glance_with(name: str) -> str:
+class SummaryPromptInput(TypedDict):
+    information: str
+
+
+def first_glance_with(name: str):
     """Generates a brief summary and two interesting facts about a person using their LinkedIn data"""
 
     linkedin_url = lookup(name=name)
@@ -16,17 +24,23 @@ def first_glance_with(name: str) -> str:
             Given the linkedin information {information} about a person I want you to create:
             1. A short summary
             2. Two interesting facts about them
+            {format_instructions}
         """,
         input_variables=["information"],
+        partial_variables={
+            "format_instructions": summary_parser.get_format_instructions()
+        },
     )
 
-    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
 
-    chain = summary_prompt_template | llm
+    chain: Runnable[SummaryPromptInput, response_dtos.Summary] = (
+        summary_prompt_template | llm | summary_parser
+    )
 
     res = chain.invoke(input={"information": linkedin_data})
 
-    return res.content
+    return res.model_dump()
 
 
 if __name__ == "__main__":
