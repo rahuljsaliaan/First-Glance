@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,7 +16,9 @@ class Settings(BaseSettings):
         default=8000, description="Port number in which the application should run."
     )
 
-    LANGSMITH_API_KEY: str = Field(default=None, description="Api key for tracing.")
+    langsmith_api_key: Optional[str] = Field(
+        default=None, description="Api key for tracing."
+    )
     langchain_project: str = Field(
         default="First Glance", description="Name of the project."
     )
