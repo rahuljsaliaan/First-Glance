@@ -24,8 +24,7 @@ COPY . /app/
 # Install dependencies
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi \
-    && poetry cache clear --all --no-interaction
-
+    && poetry cache clear pypi --all --no-interaction
 
 # Expose the app port
 EXPOSE 8000
