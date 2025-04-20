@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    image: rahuljsaliaan/first-glance:v1.0.0
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SCRAPEIN_API_KEY: ${SCRAPEIN_API_KEY}
+      TAVILY_API_KEY: ${TAVILY_API_KEY}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY}
+      LANGCHAIN_TRACING_V2: ${LANGCHAIN_TRACING_V2}
+      LANGCHAIN_PROJECT: ${LANGCHAIN_PROJECT}
+      LANGSMITH_URL: ${LANGSMITH_URL}
+      SCRAPEIN_URL: ${SCRAPEIN_URL}
+      PROFILE_DATA_GIST_URL: ${PROFILE_DATA_GIST_URL}
+      LINKEDIN_PROFILE_URL: ${LINKEDIN_PROFILE_URL}
