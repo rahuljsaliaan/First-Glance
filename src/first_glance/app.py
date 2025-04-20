@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from langchain_core.callbacks.manager import CallbackManager
 from contextlib import asynccontextmanager
 
-from first_glance.api.middlewares import error_middleware
+from first_glance.api.middlewares import error_middleware, add_cors_middleware
 from first_glance.api import first_glance_router
 from first_glance.core import tracer
 
@@ -23,6 +23,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
+add_cors_middleware(app)
 app.middleware("http")(error_middleware)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
