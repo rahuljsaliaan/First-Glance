@@ -1,9 +1,17 @@
 import uvicorn
 from first_glance.core import settings
+from first_glance.app import app as first_glance_app
 import os
 
 
 def run():
+    #
+    app = (
+        "first_glance.app:app"
+        if settings.environment == "development"
+        else first_glance_app
+    )
+
     # Determine the host and port based on the environment
     host = "127.0.0.1" if settings.environment == "development" else "0.0.0.0"
     port = int(
@@ -16,7 +24,7 @@ def run():
 
     # Run the application using uvicorn
     uvicorn.run(
-        "first_glance.app:app",  # The app to run (import path)
+        app=app,
         host=host,
         port=port,
         reload=reload,
