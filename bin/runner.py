@@ -20,6 +20,7 @@ def run():
         port=settings.port,
         reload=reload,
         app_dir=app_dir,
+        proxy_headers=True,
     )
 
 
