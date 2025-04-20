@@ -20,7 +20,7 @@ def run():
 
     # Run the app with uvicorn
     uvicorn.run(
-        app=app,
+        app,
         host=host,
         port=settings.port,
         reload=reload,  # Only enabled in development

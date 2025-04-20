@@ -14,6 +14,14 @@ class Settings(BaseSettings):
     port: int = Field(
         default=8000, description="Port number in which the application should run."
     )
+
+    langchain_project: str = Field(
+        default="First Glance", description="Name of the project."
+    )
+    langchain_tracing_v2: bool = Field(
+        default=False, description="Enables or disabled the langchain tracing."
+    )
+
     openai_api_key: str = Field(..., description="API key for OpenAI.")
     scrapein_api_key: str = Field(..., description="API key for ScrapeIn.")
     tavily_api_key: str = Field(..., description="API key for Tavily AI search.")

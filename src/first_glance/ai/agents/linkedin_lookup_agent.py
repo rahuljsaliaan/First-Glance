@@ -1,11 +1,11 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate, BasePromptTemplate
+from langchain_community.tools import TavilySearchResults
 from langchain import hub
-from langchain.agents import create_react_agent, AgentExecutor, BaseSingleActionAgent
+from langchain.agents import create_react_agent, AgentExecutor
 
 from first_glance.core import settings
 from first_glance.models import llm_schemas
-from first_glance.ai.tools import ProfileURLTavilyTool
 
 
 class LinkedInLookupAgent:
@@ -28,7 +28,7 @@ class LinkedInLookupAgent:
         )
         self.prompt: BasePromptTemplate = hub.pull("hwchase17/react")
         self.prompt_template = prompt_template
-        self.tools = [ProfileURLTavilyTool()]
+        self.tools = [TavilySearchResults(tavily_api_key=settings.tavily_api_key)]
         # NOTE: This is to not store the tools but create logic of when and why to use the tool.
         self.agent = create_react_agent(
             llm=self.llm, tools=self.tools, prompt=self.prompt
