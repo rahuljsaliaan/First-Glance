@@ -1,7 +1,3 @@
-Sure! Here's a project showcase in the same format for your **First Glance** application:
-
----
-
 # First Glance – AI-Powered LinkedIn Profile Summarizer
 
 [![Railway](https://img.shields.io/badge/Hosted%20on-Railway-blue?logo=railway)](https://first-glance-production.up.railway.app/)
