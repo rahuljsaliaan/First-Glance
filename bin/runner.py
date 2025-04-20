@@ -1,7 +1,6 @@
 import uvicorn
 from first_glance.core import settings
 from first_glance.app import app as first_glance_app
-import os
 
 
 def run():
