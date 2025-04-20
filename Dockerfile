@@ -30,4 +30,5 @@ RUN poetry config virtualenvs.create false \
 EXPOSE 8000
 
 # Command to run your app
-CMD ["poetry", "run", "start"]
+CMD ["poetry", "run", "uvicorn", "your_module_name:app", "--host", "0.0.0.0", "--port", "8000"]
+
