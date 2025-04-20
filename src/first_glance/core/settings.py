@@ -16,8 +16,11 @@ class Settings(BaseSettings):
         default=8000, description="Port number in which the application should run."
     )
 
+    langsmith_url: Optional[str] = Field(
+        default=None, description="URL of the the Lang smith"
+    )
     langsmith_api_key: Optional[str] = Field(
-        default=None, description="Api key for tracing."
+        default=None, description="Api key for Lang smith."
     )
     langchain_project: str = Field(
         default="First Glance", description="Name of the project."
