@@ -9,7 +9,10 @@ class Settings(BaseSettings):
 
     environment: str = Field(
         default="production",
-        description="Environment that specifies production or development",
+        description="Environment that specifies production or development.",
+    )
+    port: int = Field(
+        default=8000, description="Port number in which the application should run."
     )
     openai_api_key: str = Field(..., description="API key for OpenAI.")
     scrapein_api_key: str = Field(..., description="API key for ScrapeIn.")
