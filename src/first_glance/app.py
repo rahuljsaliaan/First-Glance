@@ -14,7 +14,7 @@ if tracer:
 
 
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app: FastAPI):
     print("🚀 FastAPI application starting up: ✈️")
     yield
     print("🛑 FastAPI application shutting down.")
