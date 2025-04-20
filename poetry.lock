@@ -525,6 +525,22 @@ uvicorn = {version = ">=0.15.0", extras = ["standard"]}
 standard = ["uvicorn[standard] (>=0.15.0)"]
 
 [[package]]
+name = "fastapi-proxiedheadersmiddleware"
+version = "0.9.0"
+description = "Middleware for fastapi allowing it to respect X-Forwarded-... headers set by proxies."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "fastapi-proxiedheadersmiddleware-0.9.0.tar.gz", hash = "sha256:5672f68cef03181b92d24aa5894c903dd0ac630f6781cfb148dee1f18eca1e38"},
+    {file = "fastapi_proxiedheadersmiddleware-0.9.0-py3-none-any.whl", hash = "sha256:31b02e1321fc5bdd51c9f2dc60ca36ae1c7637a2fbad496eb34eb17483c260ea"},
+]
+
+[package.dependencies]
+fastapi = ">=0.68.0"
+requests = ">=2.26,<3.0"
+
+[[package]]
 name = "frozenlist"
 version = "1.5.0"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -3062,4 +3078,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13 <4.0"
-content-hash = "2cd6c04ecdbe0e20e98e03816c96fa1f43bddc0d706c09627bcd02339237a85a"
+content-hash = "8c4f5c9a1889099bede19ba6805ad7c10b8f926fa6e8ef573ec92f47071bbba7"
