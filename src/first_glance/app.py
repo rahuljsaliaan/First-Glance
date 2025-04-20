@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from langchain_core.callbacks.manager import CallbackManager
 from contextlib import asynccontextmanager
 
@@ -24,6 +25,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 add_cors_middleware(app)
+app.add_middleware(HTTPSRedirectMiddleware)
 app.middleware("http")(error_middleware)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
