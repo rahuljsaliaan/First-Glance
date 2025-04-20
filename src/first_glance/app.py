@@ -34,14 +34,19 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
-templates.env.globals["https_url_for"] = https_url_for
-
 
 @app.get("/")
 async def root(request: Request):
     return templates.TemplateResponse(
         name="index.html",
-        context={"request": request, "title": "First Glance", "name": "Rahul"},
+        context={
+            "request": request,
+            "title": "First Glance",
+            "name": "Rahul",
+            "https_url_for": lambda name, **params: https_url_for(
+                request, name, **params
+            ),
+        },
     )
 
 
