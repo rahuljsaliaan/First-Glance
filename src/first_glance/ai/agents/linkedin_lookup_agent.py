@@ -24,7 +24,7 @@ class LinkedInLookupAgent:
             prompt_template = self._default_prompt_template
 
         self.llm = ChatOpenAI(
-            api_key=settings.openai_api_key, model_name="gpt-3.5-turbo", temperature=0
+            api_key=settings.openai_api_key, model_name="gpt-4o-mini", temperature=0
         )
         self.prompt: BasePromptTemplate = hub.pull("hwchase17/react")
         self.prompt_template = prompt_template

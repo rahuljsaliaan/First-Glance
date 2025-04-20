@@ -12,5 +12,5 @@ async def get_first_glance(data: request_dtos.FirstGlanceRequest):
     data = first_glance_with(name=data.name)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content=data,
+        content=data.model_dump(),
     )

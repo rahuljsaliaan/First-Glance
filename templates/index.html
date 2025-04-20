@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Link to External CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Inside the .container div, before the input -->
+      <h1 class="app-title">First Glance</h1>
+
+      <!-- Input Box to Search for Person -->
+      <input
+        type="text"
+        id="search-name"
+        placeholder="Enter name to search"
+        class="search-input"
+      />
+      <button id="search-button" class="search-button">Search</button>
+
+      <!-- Profile Information -->
+      <div class="profile-info" hidden>
+        <img
+          class="avatar"
+          src="https://via.placeholder.com/150"
+          alt="User profile picture placeholder"
+        />
+        <h1 id="name"></h1>
+        <p id="summary" class="summary">Loading...</p>
+        <ul id="facts" class="facts"></ul>
+      </div>
+
+      <!-- Loading Message -->
+      <div id="loading-message" class="loading" hidden>Loading data...</div>
+    </div>
+
+    <!-- Link to External JavaScript -->
+    <script src="{{ url_for('static', path='js/script.js') }}"></script>
+  </body>
+</html>

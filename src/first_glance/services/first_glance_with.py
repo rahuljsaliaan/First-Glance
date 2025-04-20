@@ -1,4 +1,3 @@
-from typing import TypedDict
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
@@ -9,7 +8,7 @@ from first_glance.ai.output_parsers import summary_parser
 from first_glance.models import response_dtos, llm_schemas
 
 
-def first_glance_with(name: str):
+def first_glance_with(name: str) -> response_dtos.Summary:
     """Generates a brief summary and two interesting facts about a person using their LinkedIn data."""
 
     linkedin_url = lookup(name=name)
@@ -24,7 +23,7 @@ def first_glance_with(name: str):
         """,
         input_variables=["information"],
         partial_variables={
-            "format_instructions": summary_parser.get_format_instructions()
+            "format_instructions": summary_parser.get_format_instructions
         },
     )
 
@@ -36,7 +35,7 @@ def first_glance_with(name: str):
 
     res = chain.invoke(input={"information": linkedin_data})
 
-    return res.model_dump()
+    return res
 
 
 if __name__ == "__main__":
