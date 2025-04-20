@@ -12,14 +12,15 @@ from first_glance.core import tracer
 if tracer:
     CallbackManager.configure(inheritable_callbacks=[tracer])
 
-app = FastAPI()
-
 
 @asynccontextmanager
 async def lifespan():
     print("🚀 FastAPI application starting up: ✈️")
     yield
     print("🛑 FastAPI application shutting down.")
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 app.middleware("http")(error_middleware)
