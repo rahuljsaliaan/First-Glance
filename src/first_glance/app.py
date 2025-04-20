@@ -8,6 +8,7 @@ from contextlib import asynccontextmanager
 from first_glance.api.middlewares import error_middleware, add_cors_middleware
 from first_glance.api import first_glance_router
 from first_glance.core import tracer
+from first_glance.utils import https_url_for
 
 # Tracker configure
 if tracer:
@@ -32,6 +33,8 @@ app.middleware("http")(error_middleware)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
+
+templates.env.globals["https_url_for"] = https_url_for
 
 
 @app.get("/")

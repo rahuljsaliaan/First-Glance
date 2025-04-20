@@ -13,7 +13,7 @@
     <!-- Link to External CSS -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', path='css/styles.css', scheme='https') }}"
+      href="{{ https_url_for('static', path='css/styles.css') }}"
     />
   </head>
   <body>
@@ -47,6 +47,6 @@
     </div>
 
     <!-- Link to External JavaScript -->
-    <script src="{{ url_for('static', path='js/script.js', shceme='https') }}"></script>
+    <script src="{{ https_url_for('static', path='js/script.js') }}"></script>
   </body>
 </html>
