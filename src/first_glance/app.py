@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from langchain_core.callbacks.manager import CallbackManager
+from contextlib import asynccontextmanager
 
 from first_glance.api.middlewares import error_middleware
 from first_glance.api import first_glance_router
@@ -12,6 +13,14 @@ if tracer:
     CallbackManager.configure(inheritable_callbacks=[tracer])
 
 app = FastAPI()
+
+
+@asynccontextmanager
+async def lifespan():
+    print("🚀 FastAPI application starting up: ✈️")
+    yield
+    print("🛑 FastAPI application shutting down.")
+
 
 app.middleware("http")(error_middleware)
 
