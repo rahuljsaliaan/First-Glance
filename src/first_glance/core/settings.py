@@ -7,6 +7,10 @@ class Settings(BaseSettings):
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
 
+    environment: str = Field(
+        default="production",
+        description="Environment that specifies production or development",
+    )
     openai_api_key: str = Field(..., description="API key for OpenAI.")
     scrapein_api_key: str = Field(..., description="API key for ScrapeIn.")
     tavily_api_key: str = Field(..., description="API key for Tavily AI search.")
