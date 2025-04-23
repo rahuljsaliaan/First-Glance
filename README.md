@@ -32,7 +32,7 @@ Experience the convenience and intelligence of First Glance:
 
 ## Technologies Used
 
-- Python (Flask/FastAPI backend)
+- Python (FastAPI backend)
 - OpenAI LLM (for profile summarization)
 - HTML/CSS/JS (for the frontend)
 - Railway (for deployment)
